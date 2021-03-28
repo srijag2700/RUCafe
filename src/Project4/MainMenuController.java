@@ -33,4 +33,24 @@ public class MainMenuController {
         stage.setScene(new Scene(root));
         stage.show();
     }
+
+    @FXML
+    public void openViewOrder(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("viewOrder.fxml"));
+        Parent root = (Parent) loader.load();
+        Stage stage = new Stage();
+        stage.setTitle("View Order");
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+    @FXML
+    public void openAllOrders(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("allOrders.fxml"));
+        Parent root = (Parent) loader.load();
+        Stage stage = new Stage();
+        stage.setTitle("All Orders");
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
 }
