@@ -23,7 +23,7 @@
           <RowConstraints maxHeight="62.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="orderCoffee" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="128.0" prefWidth="172.0" text="Order Coffee" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Button fx:id="orderCoffee" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#openCoffeeOrder" prefHeight="128.0" prefWidth="172.0" text="Order Coffee" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <graphic>
                   <ImageView fitHeight="116.0" fitWidth="149.0" pickOnBounds="true" preserveRatio="true">
                      <image>

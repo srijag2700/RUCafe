@@ -23,4 +23,14 @@ public class MainMenuController {
         stage.setScene(new Scene(root));
         stage.show();
     }
+
+    @FXML
+    public void openCoffeeOrder(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("coffee.fxml"));
+        Parent root = (Parent) loader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Order Coffee");
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
 }
