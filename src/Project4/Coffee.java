@@ -1,11 +1,13 @@
 package Project4;
 
 public class Coffee extends MenuItem implements Customizable {
+    public String size;
+    public int quantity;
+
     public static final double SHORT_PRICE = 1.99;
     public static final double TALL_PRICE = 2.49;
     public static final double GRANDE_PRICE = 2.99;
     public static final double VENTI_PRICE = 3.49;
-    String size = "";
     // array list for add-ins?
 
     public boolean add(Object obj) {
@@ -34,5 +36,10 @@ public class Coffee extends MenuItem implements Customizable {
 
         // something for add ins
 
+    }
+
+    @Override
+    public String toString() {
+        return (size + " coffee (" + quantity + "), insert add ins here");
     }
 }
