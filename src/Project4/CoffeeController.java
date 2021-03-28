@@ -25,4 +25,27 @@ public class CoffeeController {
     public void setMainMenuController(MainMenuController controller) {
         mainMenuController = controller;
     }
+
+    @FXML
+    public void initialize() {
+
+    }
+
+    @FXML
+    public void addCoffee(ActionEvent event) {
+        String newCoffeeSize = "";
+        try {
+            RadioButton selectedCoffeeSize = (RadioButton) size.getSelectedToggle();
+            newCoffeeSize = selectedCoffeeSize.getText();
+        }
+        catch (NullPointerException e) {
+            // make popup for no size selected?
+            return;
+        }
+
+    }
+
+    public void removeCoffee(ActionEvent event) {
+
+    }
 }
