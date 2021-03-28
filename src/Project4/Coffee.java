@@ -1,20 +1,39 @@
 package Project4;
 
+import java.util.ArrayList;
+
 public class Coffee extends MenuItem implements Customizable {
     public String size;
     public int quantity;
+    public ArrayList<String> addIns; // is this correct?
 
     public static final double SHORT_PRICE = 1.99;
     public static final double TALL_PRICE = 2.49;
     public static final double GRANDE_PRICE = 2.99;
     public static final double VENTI_PRICE = 3.49;
+    public static final double ADDINS_PRICE = 0.20;
     // array list for add-ins?
 
+    public Coffee(String size, int quantity, ArrayList<String> addIns) {
+        super();
+        this.size = size;
+        this.quantity = quantity;
+        this.addIns = addIns; // ??
+    }
+
     public boolean add(Object obj) {
+        if (obj instanceof String) {
+            String newAddIn = (String) obj;
+            addIns.add(newAddIn);
+        }
         return false;
     }
 
     public boolean remove(Object obj) {
+        if (obj instanceof String) {
+            String newAddIn = (String) obj;
+            addIns.remove(newAddIn);
+        }
         return false;
     }
 
@@ -34,8 +53,9 @@ public class Coffee extends MenuItem implements Customizable {
             price = VENTI_PRICE;
         }
 
-        // something for add ins
-
+        // add ins
+        price += ADDINS_PRICE * addIns.size();
+        price *= quantity;
     }
 
     @Override
