@@ -5,12 +5,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class MainMenuController {
+
+    protected Order order = new Order();
+
     @FXML
     private Button orderCoffee, orderDonuts, viewOrder, allOrders;
 
@@ -22,6 +26,9 @@ public class MainMenuController {
         stage.setTitle("Order Donuts");
         stage.setScene(new Scene(root));
         stage.show();
+
+        DonutsController dController = loader.getController();
+        dController.setMainMenuController(this);
     }
 
     @FXML
@@ -36,12 +43,26 @@ public class MainMenuController {
 
     @FXML
     public void openViewOrder(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("viewOrder.fxml"));
-        Parent root = (Parent) loader.load();
-        Stage stage = new Stage();
-        stage.setTitle("View Order");
-        stage.setScene(new Scene(root));
-        stage.show();
+        if (order.getOrder().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Empty Order");
+            alert.setHeaderText("Your current order is empty.");
+            alert.setContentText("Please add items to your order.");
+            alert.showAndWait();
+        }
+        else {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("viewOrder.fxml"));
+            Parent root = (Parent) loader.load();
+
+            Stage stage = new Stage();
+            stage.setTitle("View Order");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            ViewOrderController vController = loader.getController();
+            vController.setMainMenuController(this);
+            vController.setOrder(order);
+        }
     }
 
     @FXML

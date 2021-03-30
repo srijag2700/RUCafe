@@ -4,9 +4,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Spinner;
+
+import javax.swing.*;
 
 public class DonutsController {
 
@@ -17,14 +20,16 @@ public class DonutsController {
     private ListView yeastDonutFlavors, cakeDonutFlavors, donutHoleFlavors, selectedDonuts;
 
     @FXML
-    private MainMenuController mainMenuController;
+    private MainMenuController mmController;
 
     @FXML
     private Spinner donutQuantity;
 
+    //protected Order currentOrder;
+
     @FXML
     public void setMainMenuController(MainMenuController controller) {
-        mainMenuController = controller;
+        mmController = controller;
     }
 
     @FXML
@@ -86,7 +91,7 @@ public class DonutsController {
 
         if (selectedDonutType != null) {
             Donut newDonut = new Donut((String) donutComboBox.getSelectionModel().getSelectedItem(), selectedDonutType, (Integer) donutQuantity.getValue());
-            selectedDonuts.getItems().add(newDonut.toString());
+            selectedDonuts.getItems().add(newDonut);
         }
     }
 
@@ -95,5 +100,15 @@ public class DonutsController {
         if (selectedDonuts.getSelectionModel().getSelectedItem() != null) {
             selectedDonuts.getItems().remove(selectedDonuts.getSelectionModel().getSelectedItem());
         }
+    }
+
+    @FXML
+    public void addDonutsToOrder(ActionEvent event) {
+        for (Object o : selectedDonuts.getItems()) {
+            Donut currentDonut = (Donut) o;
+            mmController.order.add(currentDonut);
+            System.out.println("Donut added.");
+        }
+        System.out.println(mmController.order.getOrder());
     }
 }
