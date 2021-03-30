@@ -4,6 +4,7 @@ public class Donut extends MenuItem {
     private String type; // yeast, cake, or donut hole
     private String flavor; // the flavor
     private int quantity;
+    private double price;
 
     private final static double YEAST_PRICE = 1.39;
     private final static double CAKE_PRICE = 1.59;
@@ -28,6 +29,10 @@ public class Donut extends MenuItem {
         }
 
         price *= quantity;
+    }
+
+    public double getPrice() {
+        return price;
     }
 
     @Override

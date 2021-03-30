@@ -23,5 +23,7 @@
          <font>
             <Font size="23.0" />
          </font></Label>
+      <TextField fx:id="donutSubtotal" editable="false" layoutX="357.0" layoutY="346.0" prefHeight="25.0" prefWidth="81.0" />
+      <Label layoutX="301.0" layoutY="350.0" text="Subtotal" />
    </children>
 </AnchorPane>

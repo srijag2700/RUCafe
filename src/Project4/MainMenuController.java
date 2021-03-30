@@ -7,12 +7,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class MainMenuController {
 
+    protected StoreOrders allStoreOrders = new StoreOrders();
     protected Order order = new Order();
 
     @FXML
@@ -29,6 +31,8 @@ public class MainMenuController {
 
         DonutsController dController = loader.getController();
         dController.setMainMenuController(this);
+
+        System.out.println(allStoreOrders);
     }
 
     @FXML
@@ -62,6 +66,7 @@ public class MainMenuController {
             ViewOrderController vController = loader.getController();
             vController.setMainMenuController(this);
             vController.setOrder(order);
+            vController.setAllStoreOrders(allStoreOrders);
         }
     }
 

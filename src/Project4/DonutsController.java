@@ -1,6 +1,7 @@
 package Project4;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.TextField;
 
 import javax.swing.*;
 
@@ -24,6 +26,9 @@ public class DonutsController {
 
     @FXML
     private Spinner donutQuantity;
+
+    @FXML
+    private TextField donutSubtotal;
 
     //protected Order currentOrder;
 
@@ -72,6 +77,16 @@ public class DonutsController {
                     donutHoleFlavors.setVisible(true);
                 }
             }
+        });
+
+        selectedDonuts.getItems().addListener((ListChangeListener) change -> {
+            double donutSum = 0;
+            for (Object o : selectedDonuts.getItems()) {
+                Donut currentDonut = (Donut) o;
+                currentDonut.itemPrice();
+                donutSum += currentDonut.getPrice();
+            }
+            donutSubtotal.setText("" + donutSum);
         });
 
     }
