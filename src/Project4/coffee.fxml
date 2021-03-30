@@ -31,7 +31,12 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Spinner fx:id="coffeeQuantity" layoutX="229.0" layoutY="123.0" prefHeight="25.0" prefWidth="81.0" />
+      <Spinner fx:id="coffeeQuantity" layoutX="229.0" layoutY="123.0" prefHeight="25.0" prefWidth="81.0">
+         <valueFactory>
+            <SpinnerValueFactory.IntegerSpinnerValueFactory max="100" min="1" />
+         </valueFactory>
+      </Spinner>
+>>>>>>> 788bd18e3e8d13ef78ea622c5c2aaaacdba7518c
       <Button layoutX="244.0" layoutY="170.0" mnemonicParsing="false" onAction="#addCoffee" text="&gt;&gt;" />
       <Button layoutX="244.0" layoutY="205.0" mnemonicParsing="false" onAction="#removeCoffee" text="&lt;&lt;" />
       <ListView fx:id="selectedCoffee" layoutX="360.0" layoutY="105.0" prefHeight="200.0" prefWidth="200.0" />

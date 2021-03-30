@@ -119,11 +119,26 @@ public class DonutsController {
 
     @FXML
     public void addDonutsToOrder(ActionEvent event) {
-        for (Object o : selectedDonuts.getItems()) {
-            Donut currentDonut = (Donut) o;
-            mmController.order.add(currentDonut);
-            System.out.println("Donut added.");
+        if (selectedDonuts.getItems().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("No Donuts Selected");
+            alert.setHeaderText("Please select donuts to add to your order.");
+            alert.showAndWait();
         }
-        System.out.println(mmController.order.getOrder());
+
+        else {
+            for (Object o : selectedDonuts.getItems()) {
+                Donut currentDonut = (Donut) o;
+                mmController.order.add(currentDonut);
+                System.out.println("Donut added.");
+            }
+            System.out.println(mmController.order.getOrder());
+            selectedDonuts.getItems().clear();
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Donuts Added");
+            alert.setHeaderText("Your donuts have been added to your order.");
+            alert.showAndWait();
+        }
     }
 }

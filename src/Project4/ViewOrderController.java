@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import java.text.DecimalFormat;
 
 
 public class ViewOrderController {
@@ -26,6 +27,8 @@ public class ViewOrderController {
     private static StoreOrders s;
     private double salesTaxValue, totalValue;
 
+    private DecimalFormat df = new DecimalFormat("$#,###,###,##0.00");
+
     @FXML
     public void setMainMenuController(MainMenuController controller) {
         mmController = controller;
@@ -37,18 +40,18 @@ public class ViewOrderController {
         observableOrder = FXCollections.observableArrayList(o.getOrder());
         currentOrderList.setItems(observableOrder);
 
-        subtotal.setText("" + o.getSubtotal());
+        subtotal.setText("" + df.format(o.getSubtotal()));
         salesTaxValue = 0.06625 * o.getSubtotal();
-        salesTax.setText("" + salesTaxValue);
+        salesTax.setText("" + df.format(salesTaxValue));
         totalValue = o.getSubtotal() + salesTaxValue;
-        total.setText("" + totalValue);
+        total.setText("" + df.format(totalValue));
 
         currentOrderList.getItems().addListener((ListChangeListener) change -> {
-            subtotal.setText("" + o.getSubtotal());
+            subtotal.setText("" + df.format(o.getSubtotal()));
             salesTaxValue = 0.06625 * o.getSubtotal();
-            salesTax.setText("" + salesTaxValue);
+            salesTax.setText("" + df.format(salesTaxValue));
             totalValue = o.getSubtotal() + salesTaxValue;
-            total.setText("" + totalValue);
+            total.setText("" + df.format(totalValue));
         });
     }
 
@@ -69,6 +72,10 @@ public class ViewOrderController {
     public void placeOrder(ActionEvent event) {
         Order finalOrder = new Order(o);
         s.add(finalOrder);
+        observableOrder.clear();
+        subtotal.clear();
+        salesTax.clear();
+        total.clear();
         mmController.order = new Order();
     }
 }
