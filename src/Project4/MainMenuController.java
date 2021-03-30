@@ -43,6 +43,9 @@ public class MainMenuController {
         stage.setTitle("Order Coffee");
         stage.setScene(new Scene(root));
         stage.show();
+
+        CoffeeController cController = loader.getController();
+        cController.setMainMenuController(this);
     }
 
     @FXML

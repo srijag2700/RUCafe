@@ -5,6 +5,7 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import java.text.DecimalFormat;
@@ -70,12 +71,25 @@ public class ViewOrderController {
 
     @FXML
     public void placeOrder(ActionEvent event) {
-        Order finalOrder = new Order(o);
-        s.add(finalOrder);
-        observableOrder.clear();
-        subtotal.clear();
-        salesTax.clear();
-        total.clear();
-        mmController.order = new Order();
+        if (observableOrder.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Empty Order");
+            alert.setHeaderText("Please add items to your order.");
+            alert.showAndWait();
+        }
+        else {
+            Order finalOrder = new Order(o);
+            s.add(finalOrder);
+            observableOrder.clear();
+            subtotal.clear();
+            salesTax.clear();
+            total.clear();
+            mmController.order = new Order();
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Order Placed");
+            alert.setHeaderText("Your order has been placed!");
+            alert.showAndWait();
+        }
     }
 }

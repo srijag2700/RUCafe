@@ -6,12 +6,9 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
+
+import java.text.DecimalFormat;
 
 public class CoffeeController {
 
@@ -36,6 +33,8 @@ public class CoffeeController {
     @FXML
     private TextField coffeeSubtotal;
 
+    private DecimalFormat df = new DecimalFormat("$#,###,###,##0.00");
+
     @FXML
     public void setMainMenuController(MainMenuController controller) {
         mmController = controller;
@@ -50,7 +49,7 @@ public class CoffeeController {
                 currentCoffee.itemPrice();
                 coffeeSum += currentCoffee.getPrice();
             }
-            coffeeSubtotal.setText("" + coffeeSum);
+            coffeeSubtotal.setText("" + df.format(coffeeSum));
         });
     }
 
@@ -98,11 +97,26 @@ public class CoffeeController {
 
     @FXML
     public void addCoffeeToOrder(ActionEvent event) {
-        for (Object o : selectedCoffee.getItems()) {
-            Coffee currentCoffee = (Coffee) o;
-            mmController.order.add(currentCoffee);
-            System.out.println("Coffee added.");
+        if (selectedCoffee.getItems().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("No Coffee Selected");
+            alert.setHeaderText("Please select coffee to add to your order.");
+            alert.showAndWait();
         }
-        System.out.println(mmController.order.getOrder());
+        else {
+            for (Object o : selectedCoffee.getItems()) {
+                Coffee currentCoffee = (Coffee) o;
+                mmController.order.add(currentCoffee);
+                System.out.println("Coffee added.");
+            }
+            System.out.println(mmController.order.getOrder());
+            selectedCoffee.getItems().clear();
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Coffee Added");
+            alert.setHeaderText("Your coffee has been added to your order.");
+            alert.showAndWait();
+        }
+
     }
 }

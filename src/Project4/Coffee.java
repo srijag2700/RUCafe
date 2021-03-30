@@ -55,7 +55,7 @@ public class Coffee extends MenuItem implements Customizable {
         }
 
         // add ins
-        price += ADDINS_PRICE * addIns.size();
+        price += ADDINS_PRICE * (double) addIns.size();
         price *= quantity;
     }
 
@@ -65,6 +65,15 @@ public class Coffee extends MenuItem implements Customizable {
 
     @Override
     public String toString() {
-        return (size + " coffee (" + quantity + "), insert add ins here");
+        String totalAddIns = "";
+        for (int i = 0; i < addIns.size(); i++) {
+            if (i == addIns.size() - 1) {
+                totalAddIns += addIns.get(i);
+            }
+            else {
+                totalAddIns += addIns.get(i) + ", ";
+            }
+        }
+        return (size + " coffee (" + quantity + "), with " + totalAddIns);
     }
 }
