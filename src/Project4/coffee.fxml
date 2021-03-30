@@ -10,30 +10,33 @@
          <font>
             <Font size="23.0" />
          </font></Label>
-      <RadioButton layoutX="30.0" layoutY="81.0" mnemonicParsing="false" text="Short">
+      <RadioButton fx:id="choiceShort" layoutX="30.0" layoutY="81.0" mnemonicParsing="false" text="Short">
          <toggleGroup>
             <ToggleGroup fx:id="size" />
          </toggleGroup></RadioButton>
-      <RadioButton layoutX="88.0" layoutY="81.0" mnemonicParsing="false" text="Tall" toggleGroup="$size" />
-      <RadioButton layoutX="137.0" layoutY="81.0" mnemonicParsing="false" text="Grande" toggleGroup="$size" />
-      <RadioButton layoutX="204.0" layoutY="81.0" mnemonicParsing="false" text="Venti" toggleGroup="$size" />
+      <RadioButton fx:id="choiceTall" layoutX="88.0" layoutY="81.0" mnemonicParsing="false" text="Tall" toggleGroup="$size" />
+      <RadioButton fx:id="choiceGrande" layoutX="137.0" layoutY="81.0" mnemonicParsing="false" text="Grande" toggleGroup="$size" />
+      <RadioButton fx:id="choiceVenti" layoutX="204.0" layoutY="81.0" mnemonicParsing="false" text="Venti" toggleGroup="$size" />
       <Label layoutX="32.0" layoutY="47.0" text="Choose a size">
          <font>
             <Font size="16.0" />
          </font></Label>
-      <CheckBox layoutX="31.0" layoutY="149.0" mnemonicParsing="false" text="Cream" />
-      <CheckBox layoutX="31.0" layoutY="174.0" mnemonicParsing="false" text="Syrup" />
-      <CheckBox layoutX="31.0" layoutY="200.0" mnemonicParsing="false" text="Milk" />
-      <CheckBox layoutX="31.0" layoutY="225.0" mnemonicParsing="false" text="Caramel" />
-      <CheckBox layoutX="32.0" layoutY="251.0" mnemonicParsing="false" text="Whipped Cream" />
+      <CheckBox fx:id="cream" layoutX="31.0" layoutY="149.0" mnemonicParsing="false" text="Cream" />
+      <CheckBox fx:id="syrup" layoutX="31.0" layoutY="174.0" mnemonicParsing="false" text="Syrup" />
+      <CheckBox fx:id="milk" layoutX="31.0" layoutY="200.0" mnemonicParsing="false" text="Milk" />
+      <CheckBox fx:id="caramel" layoutX="31.0" layoutY="225.0" mnemonicParsing="false" text="Caramel" />
+      <CheckBox fx:id="whippedCream" layoutX="32.0" layoutY="251.0" mnemonicParsing="false" text="Whipped Cream" />
       <Label layoutX="31.0" layoutY="116.0" text="Choose add-ins">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Spinner layoutX="229.0" layoutY="123.0" prefHeight="25.0" prefWidth="81.0" />
-      <Button layoutX="244.0" layoutY="170.0" mnemonicParsing="false" text="&gt;&gt;" />
-      <Button layoutX="244.0" layoutY="205.0" mnemonicParsing="false" text="&lt;&lt;" />
-      <TextArea layoutX="355.0" layoutY="117.0" prefHeight="200.0" prefWidth="200.0" />
+      <Spinner fx:id="coffeeQuantity" editable="true" layoutX="229.0" layoutY="123.0" prefHeight="25.0" prefWidth="81.0" />
+      <Button layoutX="244.0" layoutY="170.0" mnemonicParsing="false" onAction="#addCoffee" text="&gt;&gt;" />
+      <Button layoutX="244.0" layoutY="205.0" mnemonicParsing="false" onAction="#removeCoffee" text="&lt;&lt;" />
+      <ListView fx:id="selectedCoffee" layoutX="360.0" layoutY="105.0" prefHeight="200.0" prefWidth="200.0" />
+      <TextField fx:id="coffeeSubtotal" layoutX="360.0" layoutY="336.0" prefHeight="25.0" prefWidth="87.0" />
+      <Button layoutX="473.0" layoutY="336.0" mnemonicParsing="false" onAction="#addCoffeeToOrder" text="Add to Order" />
+      <Label layoutX="310.0" layoutY="340.0" text="Subtotal" />
    </children>
 </AnchorPane>
