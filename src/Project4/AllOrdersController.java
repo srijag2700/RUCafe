@@ -4,11 +4,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.text.DecimalFormat;
+import javafx.event.ActionEvent;
 
 public class AllOrdersController {
 
@@ -60,7 +63,35 @@ public class AllOrdersController {
         });
 
         currentViewOrder.getItems().addListener((ListChangeListener) change -> {
-            currentOrderTotal.setText(df.format(s.getOrderByOrderNumber((int) viewOrderNumber.getValue()).getTotal()));
+            if (!viewOrderNumber.getItems().isEmpty()) {
+                currentOrderTotal.setText(df.format(s.getOrderByOrderNumber((int) viewOrderNumber.getValue()).getTotal()));
+            }
         });
+    }
+
+    @FXML
+    public void cancelSelectOrder(ActionEvent event) {
+        if (viewOrderNumber.getSelectionModel().getSelectedItem() != null) {
+            s.remove(s.getOrderByOrderNumber((int) viewOrderNumber.getValue()));
+            viewOrderNumber.getItems().remove(viewOrderNumber.getSelectionModel().getSelectedItem());
+        }
+
+        if (viewOrderNumber.getItems().isEmpty()) {
+            currentViewOrder.getItems().clear();
+            currentOrderTotal.clear();
+        }
+    }
+
+    @FXML
+    public void exportAllOrders(ActionEvent event) throws IOException {
+        if (!s.getStore().isEmpty()) {
+            s.exportAllOrders();
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("No Store Orders");
+            alert.setHeaderText("Please add store orders before exporting.");
+            alert.showAndWait();
+        }
     }
 }

@@ -4,19 +4,19 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-
-<AnchorPane prefHeight="408.0" prefWidth="314.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project4.AllOrdersController">
+<AnchorPane prefHeight="408.0" prefWidth="343.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Project4.AllOrdersController">
    <children>
-      <ListView fx:id="currentViewOrder" layoutX="57.0" layoutY="159.0" prefHeight="200.0" prefWidth="200.0" />
-      <Button fx:id="cancelSelectedOrder" layoutX="123.0" layoutY="369.0" mnemonicParsing="false" text="Cancel Selected Order" />
-      <TextField fx:id="currentOrderTotal" editable="false" layoutX="190.0" layoutY="123.0" prefHeight="25.0" prefWidth="68.0" />
-      <Label layoutX="157.0" layoutY="127.0" text="Total" />
-      <ComboBox fx:id="viewOrderNumber" layoutX="190.0" layoutY="86.0" prefHeight="25.0" prefWidth="68.0" />
-      <Label layoutX="123.0" layoutY="90.0" text="View Order:" />
+      <ListView fx:id="currentViewOrder" layoutX="58.0" layoutY="161.0" prefHeight="200.0" prefWidth="226.0" />
+      <Button fx:id="cancelSelectedOrder" layoutX="56.0" layoutY="369.0" mnemonicParsing="false" onAction="#cancelSelectOrder" prefHeight="25.0" prefWidth="134.0" text="Cancel Selected Order" />
+      <TextField fx:id="currentOrderTotal" editable="false" layoutX="216.0" layoutY="123.0" prefHeight="25.0" prefWidth="68.0" />
+      <Label layoutX="182.0" layoutY="127.0" text="Total" />
+      <ComboBox fx:id="viewOrderNumber" layoutX="216.0" layoutY="86.0" prefHeight="25.0" prefWidth="68.0" />
+      <Label layoutX="147.0" layoutY="90.0" text="View Order:" />
       <Label layoutX="84.0" layoutY="40.0" text="All Store Orders">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
+      <Button fx:id="exportAllOrders" layoutX="217.0" layoutY="369.0" mnemonicParsing="false" onAction="#exportAllOrders" text="Export All" />
    </children>
 </AnchorPane>

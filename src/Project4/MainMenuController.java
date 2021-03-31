@@ -73,15 +73,24 @@ public class MainMenuController {
 
     @FXML
     public void openAllOrders(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("allOrders.fxml"));
-        Parent root = (Parent) loader.load();
-        Stage stage = new Stage();
-        stage.setTitle("All Orders");
-        stage.setScene(new Scene(root));
-        stage.show();
+        if (allStoreOrders.getStore().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("No Store Orders");
+            alert.setHeaderText("You have no store orders.");
+            alert.setContentText("Please add orders to your store.");
+            alert.showAndWait();
+        }
+        else {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("allOrders.fxml"));
+            Parent root = (Parent) loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("All Orders");
+            stage.setScene(new Scene(root));
+            stage.show();
 
-        AllOrdersController aController = loader.getController();
-        aController.setMainMenuController(this);
-        aController.setAllStoreOrders(allStoreOrders);
+            AllOrdersController aController = loader.getController();
+            aController.setMainMenuController(this);
+            aController.setAllStoreOrders(allStoreOrders);
+        }
     }
 }
