@@ -31,8 +31,6 @@ public class MainMenuController {
 
         DonutsController dController = loader.getController();
         dController.setMainMenuController(this);
-
-        System.out.println(allStoreOrders);
     }
 
     @FXML
@@ -81,5 +79,9 @@ public class MainMenuController {
         stage.setTitle("All Orders");
         stage.setScene(new Scene(root));
         stage.show();
+
+        AllOrdersController aController = loader.getController();
+        aController.setMainMenuController(this);
+        aController.setAllStoreOrders(allStoreOrders);
     }
 }

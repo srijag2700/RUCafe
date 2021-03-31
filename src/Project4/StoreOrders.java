@@ -53,6 +53,19 @@ public class StoreOrders implements Customizable{
         return allOrders;
     }
 
+    public ArrayList<Order> getStore() {
+        return store;
+    }
+
+    public Order getOrderByOrderNumber(int n) {
+        for (Order o : store) {
+            if (o.getOrderNumber() == n) {
+                return o;
+            }
+        }
+        return null;
+    }
+
     /**
      * Exports the current list of orders as a text file.
      * @throws IOException if there is an error in file selection

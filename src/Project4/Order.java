@@ -6,6 +6,7 @@ public class Order implements Customizable {
     private ArrayList<MenuItem> order;
     private int orderNumber;
     private double subtotal;
+    private static final double NJ_SALES_TAX_RATE = 0.06625;
 
     public Order() {
         order = new ArrayList<MenuItem>();
@@ -75,8 +76,13 @@ public class Order implements Customizable {
     public double getSubtotal() {
         return subtotal;
     }
-    public void clearOrder() {
-        order.clear();
+
+    public double getTax() {
+        return subtotal * NJ_SALES_TAX_RATE;
+    }
+
+    public double getTotal() {
+        return subtotal + getTax();
     }
 
     @Override

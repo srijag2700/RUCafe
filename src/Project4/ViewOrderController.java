@@ -49,10 +49,8 @@ public class ViewOrderController {
 
         currentOrderList.getItems().addListener((ListChangeListener) change -> {
             subtotal.setText("" + df.format(o.getSubtotal()));
-            salesTaxValue = 0.06625 * o.getSubtotal();
-            salesTax.setText("" + df.format(salesTaxValue));
-            totalValue = o.getSubtotal() + salesTaxValue;
-            total.setText("" + df.format(totalValue));
+            salesTax.setText("" + df.format(o.getTax()));
+            total.setText("" + df.format(o.getTotal()));
         });
     }
 

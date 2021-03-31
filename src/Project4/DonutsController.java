@@ -12,6 +12,7 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 
 import javax.swing.*;
+import java.text.DecimalFormat;
 
 public class DonutsController {
 
@@ -30,12 +31,12 @@ public class DonutsController {
     @FXML
     private TextField donutSubtotal;
 
-    //protected Order currentOrder;
-
     @FXML
     public void setMainMenuController(MainMenuController controller) {
         mmController = controller;
     }
+
+    private DecimalFormat df = new DecimalFormat("$#,###,###,##0.00");
 
     @FXML
     public void initialize() {
@@ -86,7 +87,7 @@ public class DonutsController {
                 currentDonut.itemPrice();
                 donutSum += currentDonut.getPrice();
             }
-            donutSubtotal.setText("" + donutSum);
+            donutSubtotal.setText("" + df.format(donutSum));
         });
 
     }
