@@ -85,7 +85,15 @@ public class AllOrdersController {
     @FXML
     public void exportAllOrders(ActionEvent event) throws IOException {
         if (!s.getStore().isEmpty()) {
-            s.exportAllOrders();
+            try {
+                s.exportAllOrders();
+            }
+            catch (NullPointerException e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Orders Not Exported");
+                alert.setHeaderText("There was an error exporting your orders. Please try again.");
+                alert.showAndWait();
+            }
         }
         else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
