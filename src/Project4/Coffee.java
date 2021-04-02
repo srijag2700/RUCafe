@@ -1,5 +1,11 @@
 package Project4;
 
+/**
+ * This class represents a Coffee item.
+ * It extends the MenuItem class, and also includes fields for the size of the coffee, quantity and addins.
+ * @author Srija Gottiparthi, Catherine Nguyen
+ */
+
 import java.util.ArrayList;
 
 public class Coffee extends MenuItem implements Customizable {
@@ -14,6 +20,12 @@ public class Coffee extends MenuItem implements Customizable {
     private static final double VENTI_PRICE = 3.49;
     private static final double ADDINS_PRICE = 0.20;
 
+    /**
+     * Initializes a new Coffee object with a given size, quantity and addins.
+     * @param size size of coffee
+     * @param quantity amount of coffee
+     * @param addIns addins of coffee
+     */
     public Coffee(String size, int quantity, ArrayList<String> addIns) {
         super();
         this.size = size;
@@ -21,6 +33,11 @@ public class Coffee extends MenuItem implements Customizable {
         this.addIns = addIns;
     }
 
+    /**
+     * Adds an addin to the coffee order.
+     * @param obj addin
+     * @return true if successfully added, false if otherwise
+     */
     public boolean add(Object obj) {
         if (obj instanceof String) {
             String newAddIn = (String) obj;
@@ -29,6 +46,11 @@ public class Coffee extends MenuItem implements Customizable {
         return false;
     }
 
+    /**
+     * Removes an addin from the coffee order.
+     * @param obj addin
+     * @return true if successfully removed, false if otherwise
+     */
     public boolean remove(Object obj) {
         if (obj instanceof String) {
             String newAddIn = (String) obj;
@@ -37,6 +59,9 @@ public class Coffee extends MenuItem implements Customizable {
         return false;
     }
 
+    /**
+     * Calculates the price of a donut.
+     */
     @Override
     public void itemPrice() {
         // check to make sure this is only done once
@@ -58,10 +83,18 @@ public class Coffee extends MenuItem implements Customizable {
         price *= quantity;
     }
 
+    /**
+     * Returns the price of the coffee
+     * @return price of coffee
+     */
     public double getPrice() {
         return price;
     }
 
+    /**
+     * Returns the string representation of the coffee
+     * @return string representation of the coffee
+     */
     @Override
     public String toString() {
         String totalAddIns = "";
