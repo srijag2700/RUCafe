@@ -13,8 +13,13 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.Optional;
-
 import javafx.event.ActionEvent;
+
+/**
+ * This class represents the controller for the Store Orders menu.
+ * It controls the functions of viewing the items & total of each order in the store, canceling selected orders, and exporting the list of orders as a text file.
+ * @author Srija Gottiparthi, Catherine Nguyen
+ */
 
 public class AllOrdersController {
 
@@ -33,11 +38,19 @@ public class AllOrdersController {
     private static StoreOrders s;
     private DecimalFormat df = new DecimalFormat("$#,###,###,##0.00");
 
+    /**
+     * Connects the Main Menu controller to this controller so that store orders can be viewed and removed.
+     * @param controller the Main Menu controller associated with this controller
+     */
     @FXML
     public void setMainMenuController(MainMenuController controller) {
         mmController = controller;
     }
 
+    /**
+     * Set the store orders variable from the Main Menu controller.
+     * @param s the current StoreOrders object
+     */
     @FXML
     public void setAllStoreOrders(StoreOrders s) {
         this.s = s;
@@ -72,6 +85,10 @@ public class AllOrdersController {
         });
     }
 
+    /**
+     * Cancels the selected order
+     * @param event the "Cancel Selected Order" button getting clicked
+     */
     @FXML
     public void cancelSelectOrder(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -98,6 +115,11 @@ public class AllOrdersController {
         }
     }
 
+    /**
+     * Exports the list of store orders as a text file.
+     * @param event the "Export All" button getting clicked
+     * @throws IOException if there is an error in file selection
+     */
     @FXML
     public void exportAllOrders(ActionEvent event) throws IOException {
         if (!s.getStore().isEmpty()) {

@@ -12,7 +12,15 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import java.text.DecimalFormat;
 
+/**
+ * This class represents the controller for the Order Donuts menu.
+ * It controls the functions of picking a donut type, picking a donut flavor, choosing a quantity, adding and removing donuts, and adding donuts to the current order.
+ * @author Srija Gottiparthi, Catherine Nguyen
+ */
+
 public class DonutsController {
+
+    private DecimalFormat df = new DecimalFormat("$#,###,###,##0.00");
 
     @FXML
     private ComboBox donutComboBox;
@@ -29,13 +37,18 @@ public class DonutsController {
     @FXML
     private TextField donutSubtotal;
 
+    /**
+     * Connects the Main Menu controller to this controller so that donuts can be added to the order.
+     * @param controller the Main Menu controller associated with this controller
+     */
     @FXML
     public void setMainMenuController(MainMenuController controller) {
         mmController = controller;
     }
 
-    private DecimalFormat df = new DecimalFormat("$#,###,###,##0.00");
-
+    /**
+     * Initializes the controller with the types & flavors of donuts, the relationships between each donut type and its flavors, and the running total value of the added donuts.
+     */
     @FXML
     public void initialize() {
         donutComboBox.getItems().removeAll(donutComboBox.getItems());
@@ -90,6 +103,10 @@ public class DonutsController {
 
     }
 
+    /**
+     * Adds the configured donut to the list of selected donuts.
+     * @param event the ">>" button getting clicked
+     */
     @FXML
     public void addDonut(ActionEvent event) {
         String selectedDonutType = "";
@@ -109,6 +126,10 @@ public class DonutsController {
         }
     }
 
+    /**
+     * Removes the selected donut from the list of selected donuts.
+     * @param event the "<<" button getting clicked
+     */
     @FXML
     public void removeDonut(ActionEvent event) {
         if (selectedDonuts.getSelectionModel().getSelectedItem() != null) {
@@ -116,6 +137,10 @@ public class DonutsController {
         }
     }
 
+    /**
+     * Adds the selected donuts to the overall order.
+     * @param event the "Add To Order" button getting clicked
+     */
     @FXML
     public void addDonutsToOrder(ActionEvent event) {
         if (selectedDonuts.getItems().isEmpty()) {

@@ -10,6 +10,12 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import java.text.DecimalFormat;
 
+/**
+ * This class represents the controller for the View Order menu.
+ * It controls the functions of viewing the items in the current order & their subtotal, tax, and total, removing selected items from the order, and placing the order.
+ * @author Srija Gottiparthi, Catherine Nguyen
+ */
+
 
 public class ViewOrderController {
 
@@ -30,11 +36,19 @@ public class ViewOrderController {
 
     private DecimalFormat df = new DecimalFormat("$#,###,###,##0.00");
 
+    /**
+     * Connects the Main Menu controller to this controller so that coffee can be added to the order.
+     * @param controller the Main Menu controller associated with this controller
+     */
     @FXML
     public void setMainMenuController(MainMenuController controller) {
         mmController = controller;
     }
 
+    /**
+     * Set the order variable from the Main Menu controller.
+     * @param o the current Order object
+     */
     @FXML
     public void setOrder(Order o) {
         this.o = o;
@@ -54,11 +68,19 @@ public class ViewOrderController {
         });
     }
 
+    /**
+     * Set the store orders variable from the Main Menu controller.
+     * @param s the current StoreOrders object
+     */
     @FXML
     public void setAllStoreOrders(StoreOrders s) {
         this.s = s;
     }
 
+    /**
+     * Removes the selected item from the current order.
+     * @param event the "Remove Selected Item" button getting clicked
+     */
     @FXML
     public void removeItem(ActionEvent event) {
         if (currentOrderList.getSelectionModel().getSelectedItem() != null) {
@@ -67,6 +89,10 @@ public class ViewOrderController {
         }
     }
 
+    /**
+     * Places the current order and adds it to the StoreOrders.
+     * @param event the "Place Order" button getting clicked
+     */
     @FXML
     public void placeOrder(ActionEvent event) {
         if (observableOrder.isEmpty()) {

@@ -11,8 +11,13 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-
 import java.text.DecimalFormat;
+
+/**
+ * This class represents the controller for the Order Coffee menu.
+ * It controls the functions of selecting a size & add ons for coffee, choosing a quantity, adding and removing coffee, and adding coffee to the current order.
+ * @author Srija Gottiparthi, Catherine Nguyen
+ */
 
 public class CoffeeController {
 
@@ -36,11 +41,18 @@ public class CoffeeController {
 
     private DecimalFormat df = new DecimalFormat("$#,###,###,##0.00");
 
+    /**
+     * Connects the Main Menu controller to this controller so that coffee can be added to the order.
+     * @param controller the Main Menu controller associated with this controller
+     */
     @FXML
     public void setMainMenuController(MainMenuController controller) {
         mmController = controller;
     }
 
+    /**
+     * Initializes the controller with the running total value of the added coffee.
+     */
     @FXML
     public void initialize() {
         selectedCoffee.getItems().addListener((ListChangeListener) change -> {
@@ -54,6 +66,10 @@ public class CoffeeController {
         });
     }
 
+    /**
+     * Adds the configured coffee to the list of selected coffees.
+     * @param event the ">>" button getting clicked
+     */
     @FXML
     public void addCoffee(ActionEvent event) {
         String newCoffeeSize = "";
@@ -89,12 +105,20 @@ public class CoffeeController {
         }
     }
 
+    /**
+     * Removes the selected coffee from the list of selected coffees.
+     * @param event the "<<" button getting clicked
+     */
     public void removeCoffee(ActionEvent event) {
         if (selectedCoffee.getSelectionModel().getSelectedItem() != null) {
             selectedCoffee.getItems().remove(selectedCoffee.getSelectionModel().getSelectedItem());
         }
     }
 
+    /**
+     * Adds the selected coffees to the overall order.
+     * @param event the "Add To Order" button getting clicked
+     */
     @FXML
     public void addCoffeeToOrder(ActionEvent event) {
         if (selectedCoffee.getItems().isEmpty()) {

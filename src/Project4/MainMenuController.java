@@ -7,14 +7,23 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
-
 import java.io.IOException;
+
+/**
+ * This class represents the controller for the Main Menu.
+ * It controls the buttons to order donuts, order coffee, view the current order, and view all store orders.
+ * @author Srija Gottiparthi, Catherine Nguyen
+ */
 
 public class MainMenuController {
 
     protected StoreOrders allStoreOrders = new StoreOrders();
     protected Order order = new Order();
 
+    /**
+     * Opens the window to choose and add donuts to the current order.
+     * @param event the "Order Donuts" button getting clicked
+     */
     @FXML
     public void openDonutOrder(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("donuts.fxml"));
@@ -28,6 +37,10 @@ public class MainMenuController {
         dController.setMainMenuController(this);
     }
 
+    /**
+     * Opens the window to choose and add coffee to the current order.
+     * @param event the "Order Coffee" button getting clicked
+     */
     @FXML
     public void openCoffeeOrder(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("coffee.fxml"));
@@ -41,6 +54,10 @@ public class MainMenuController {
         cController.setMainMenuController(this);
     }
 
+    /**
+     * Opens the window to view details of the current order.
+     * @param event the "View Order" button getting clicked
+     */
     @FXML
     public void openViewOrder(ActionEvent event) throws IOException {
         if (order.getOrder().isEmpty()) {
@@ -66,6 +83,10 @@ public class MainMenuController {
         }
     }
 
+    /**
+     * Opens the window to view and manage all the store orders.
+     * @param event the "All Orders" button getting clicked
+     */
     @FXML
     public void openAllOrders(ActionEvent event) throws IOException {
         if (allStoreOrders.getStore().isEmpty()) {
