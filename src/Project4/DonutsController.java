@@ -10,8 +10,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
-
-import javax.swing.*;
 import java.text.DecimalFormat;
 
 public class DonutsController {
@@ -121,7 +119,7 @@ public class DonutsController {
     @FXML
     public void addDonutsToOrder(ActionEvent event) {
         if (selectedDonuts.getItems().isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("No Donuts Selected");
             alert.setHeaderText("Please select donuts to add to your order.");
             alert.showAndWait();
@@ -131,9 +129,7 @@ public class DonutsController {
             for (Object o : selectedDonuts.getItems()) {
                 Donut currentDonut = (Donut) o;
                 mmController.order.add(currentDonut);
-                System.out.println("Donut added.");
             }
-            System.out.println(mmController.order.getOrder());
             selectedDonuts.getItems().clear();
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

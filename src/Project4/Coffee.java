@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Coffee extends MenuItem implements Customizable {
     private String size;
     private int quantity;
-    private ArrayList<String> addIns; // is this correct?
+    private ArrayList<String> addIns;
     private double price;
 
     private static final double SHORT_PRICE = 1.99;
@@ -13,13 +13,12 @@ public class Coffee extends MenuItem implements Customizable {
     private static final double GRANDE_PRICE = 2.99;
     private static final double VENTI_PRICE = 3.49;
     private static final double ADDINS_PRICE = 0.20;
-    // array list for add-ins?
 
     public Coffee(String size, int quantity, ArrayList<String> addIns) {
         super();
         this.size = size;
         this.quantity = quantity;
-        this.addIns = addIns; // ??
+        this.addIns = addIns;
     }
 
     public boolean add(Object obj) {

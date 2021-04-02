@@ -70,7 +70,7 @@ public class ViewOrderController {
     @FXML
     public void placeOrder(ActionEvent event) {
         if (observableOrder.isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Empty Order");
             alert.setHeaderText("Please add items to your order.");
             alert.showAndWait();

@@ -1,19 +1,20 @@
 package Project4;
 
 import java.util.ArrayList;
-import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ListView;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 
 import java.text.DecimalFormat;
 
 public class CoffeeController {
-
-    @FXML
-    private RadioButton choiceShort, choiceTall, choiceGrande, choiceVenti;
 
     @FXML
     private ToggleGroup size;
@@ -55,38 +56,37 @@ public class CoffeeController {
 
     @FXML
     public void addCoffee(ActionEvent event) {
-        System.out.println("adding"); // AAH
         String newCoffeeSize = "";
         try {
             RadioButton selectedCoffeeSize = (RadioButton) size.getSelectedToggle();
             newCoffeeSize = selectedCoffeeSize.getText();
-            System.out.println("size is: " + newCoffeeSize); // also delete later!
+
+            ArrayList<String> selectedAddIns = new ArrayList<>();
+            if (cream.isSelected()) {
+                selectedAddIns.add("Cream");
+            }
+            if (syrup.isSelected()) {
+                selectedAddIns.add("Syrup");
+            }
+            if (milk.isSelected()) {
+                selectedAddIns.add("Milk");
+            }
+            if (caramel.isSelected()) {
+                selectedAddIns.add("Caramel");
+            }
+            if (whippedCream.isSelected()) {
+                selectedAddIns.add("Whipped Cream");
+            }
+
+            Coffee newCoffee = new Coffee(newCoffeeSize, (Integer) coffeeQuantity.getValue(), selectedAddIns);
+            selectedCoffee.getItems().add(newCoffee);
         }
         catch (NullPointerException e) {
-            // make popup for no size selected?
-            System.out.println("help"); // delete later
-            return;
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("No Size Selected");
+            alert.setHeaderText("Please select a size for your coffee.");
+            alert.showAndWait();
         }
-
-        ArrayList<String> selectedAddIns = new ArrayList<>();
-        if (cream.isSelected()) {
-            selectedAddIns.add("Cream");
-        }
-        if (syrup.isSelected()) {
-            selectedAddIns.add("Syrup");
-        }
-        if (milk.isSelected()) {
-            selectedAddIns.add("Milk");
-        }
-        if (caramel.isSelected()) {
-            selectedAddIns.add("Caramel");
-        }
-        if (whippedCream.isSelected()) {
-            selectedAddIns.add("Whipped Cream");
-        }
-
-        Coffee newCoffee = new Coffee(newCoffeeSize, (Integer) coffeeQuantity.getValue(), selectedAddIns);
-        selectedCoffee.getItems().add(newCoffee);
     }
 
     public void removeCoffee(ActionEvent event) {
@@ -107,9 +107,7 @@ public class CoffeeController {
             for (Object o : selectedCoffee.getItems()) {
                 Coffee currentCoffee = (Coffee) o;
                 mmController.order.add(currentCoffee);
-                System.out.println("Coffee added.");
             }
-            System.out.println(mmController.order.getOrder());
             selectedCoffee.getItems().clear();
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

@@ -5,12 +5,15 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.Optional;
+
 import javafx.event.ActionEvent;
 
 public class AllOrdersController {
@@ -71,14 +74,27 @@ public class AllOrdersController {
 
     @FXML
     public void cancelSelectOrder(ActionEvent event) {
-        if (viewOrderNumber.getSelectionModel().getSelectedItem() != null) {
-            s.remove(s.getOrderByOrderNumber((int) viewOrderNumber.getValue()));
-            viewOrderNumber.getItems().remove(viewOrderNumber.getSelectionModel().getSelectedItem());
-        }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Cancel Order");
+        alert.setHeaderText("You are about to cancel an order. This action is not reversible.");
+        alert.setContentText("Are you sure you would like to cancel this order?");
 
-        if (viewOrderNumber.getItems().isEmpty()) {
-            currentViewOrder.getItems().clear();
-            currentOrderTotal.clear();
+        ButtonType yes = new ButtonType("Yes");
+        ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        alert.getButtonTypes().setAll(yes, no);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == yes) {
+            if (viewOrderNumber.getSelectionModel().getSelectedItem() != null) {
+                s.remove(s.getOrderByOrderNumber((int) viewOrderNumber.getValue()));
+                viewOrderNumber.getItems().remove(viewOrderNumber.getSelectionModel().getSelectedItem());
+            }
+
+            if (viewOrderNumber.getItems().isEmpty()) {
+                currentViewOrder.getItems().clear();
+                currentOrderTotal.clear();
+            }
         }
     }
 
@@ -96,7 +112,7 @@ public class AllOrdersController {
             }
         }
         else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("No Store Orders");
             alert.setHeaderText("Please add store orders before exporting.");
             alert.showAndWait();

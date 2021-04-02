@@ -6,8 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -16,9 +14,6 @@ public class MainMenuController {
 
     protected StoreOrders allStoreOrders = new StoreOrders();
     protected Order order = new Order();
-
-    @FXML
-    private Button orderCoffee, orderDonuts, viewOrder, allOrders;
 
     @FXML
     public void openDonutOrder(ActionEvent event) throws IOException {

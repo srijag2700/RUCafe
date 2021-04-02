@@ -2,7 +2,6 @@ package Project4;
 
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
