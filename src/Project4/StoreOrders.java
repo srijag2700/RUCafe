@@ -1,4 +1,9 @@
 package Project4;
+/**
+ * This class represents all of the store orders in the cafe.
+ * An order includes fields such as the list of orders.
+ * @author Srija Gottiparthi, Catherine Nguyen
+ */
 
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -11,10 +16,17 @@ public class StoreOrders implements Customizable{
     private ArrayList<Order> store;
     private final static int STARTING_ORDER_NUMBER = 1;
 
+    /**
+     * Initializes a new StoreOrder object with an empty array size.
+     */
     public StoreOrders() {
         store = new ArrayList<Order>();
     }
 
+    /**
+     * Returns the most recent order number.
+     * @return
+     */
     public int getLatestOrderNumber() {
         int latestOrderNumber = STARTING_ORDER_NUMBER;
         for (Order o : store) {
@@ -25,6 +37,11 @@ public class StoreOrders implements Customizable{
         return latestOrderNumber;
     }
 
+    /**
+     * Adds an order to the list of store orders.
+     * @param obj the order to add
+     * @return true if order is successfully added, false otherwise
+     */
     @Override
     public boolean add(Object obj) {
         Order newOrder = (Order) obj;
@@ -37,12 +54,21 @@ public class StoreOrders implements Customizable{
         return store.add(newOrder);
     }
 
+    /**
+     * Removes an order from the list of store orders
+     * @param obj the order to remove
+     * @return true if order is successfully removed, false otherwise
+     */
     @Override
     public boolean remove(Object obj) {
         Order orderToRemove = (Order) obj;
         return store.remove(orderToRemove);
     }
 
+    /**
+     * Returns a string representation of all the store orders
+     * @return string representation of store orders
+     */
     @Override
     public String toString() {
         String allOrders = "";
@@ -52,10 +78,19 @@ public class StoreOrders implements Customizable{
         return allOrders;
     }
 
+    /**
+     * Returns the list of store orders
+     * @return list of store orders
+     */
     public ArrayList<Order> getStore() {
         return store;
     }
 
+    /**
+     * Returns an order by its order number
+     * @param n order number
+     * @return order object if order number is found, null otherwise
+     */
     public Order getOrderByOrderNumber(int n) {
         for (Order o : store) {
             if (o.getOrderNumber() == n) {
