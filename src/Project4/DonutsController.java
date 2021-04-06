@@ -47,7 +47,7 @@ public class DonutsController {
     }
 
     /**
-     * Initializes the controller with the types & flavors of donuts, the relationships between each donut type and its flavors, and the running total value of the added donuts.
+     * Initializes the controller with the types and flavors of donuts, the relationships between each donut type and its flavors, and the running total value of the added donuts.
      */
     @FXML
     public void initialize() {
@@ -105,7 +105,7 @@ public class DonutsController {
 
     /**
      * Adds the configured donut to the list of selected donuts.
-     * @param event the ">>" button getting clicked
+     * @param event the "add donut" button getting clicked
      */
     @FXML
     public void addDonut(ActionEvent event) {
@@ -128,7 +128,7 @@ public class DonutsController {
 
     /**
      * Removes the selected donut from the list of selected donuts.
-     * @param event the "<<" button getting clicked
+     * @param event the "remove donut" button getting clicked
      */
     @FXML
     public void removeDonut(ActionEvent event) {

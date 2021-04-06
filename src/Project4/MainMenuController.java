@@ -23,6 +23,7 @@ public class MainMenuController {
     /**
      * Opens the window to choose and add donuts to the current order.
      * @param event the "Order Donuts" button getting clicked
+     * @throws IOException if there is an error loading the parent
      */
     @FXML
     public void openDonutOrder(ActionEvent event) throws IOException {
@@ -40,6 +41,7 @@ public class MainMenuController {
     /**
      * Opens the window to choose and add coffee to the current order.
      * @param event the "Order Coffee" button getting clicked
+     * @throws IOException if there is an error loading the parent
      */
     @FXML
     public void openCoffeeOrder(ActionEvent event) throws IOException {
@@ -57,6 +59,7 @@ public class MainMenuController {
     /**
      * Opens the window to view details of the current order.
      * @param event the "View Order" button getting clicked
+     * @throws IOException if there is an error loading the parent
      */
     @FXML
     public void openViewOrder(ActionEvent event) throws IOException {
@@ -86,6 +89,7 @@ public class MainMenuController {
     /**
      * Opens the window to view and manage all the store orders.
      * @param event the "All Orders" button getting clicked
+     * @throws IOException if there is an error loading the parent
      */
     @FXML
     public void openAllOrders(ActionEvent event) throws IOException {

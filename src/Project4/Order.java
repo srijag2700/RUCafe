@@ -1,11 +1,13 @@
 package Project4;
+
+import java.util.ArrayList;
+
 /**
  * This class represents an order in the cafe.
  * An order includes fields such as the list of menu items, unique order number and subtotal.
  * @author Srija Gottiparthi, Catherine Nguyen
  */
 
-import java.util.ArrayList;
 
 public class Order implements Customizable {
     private ArrayList<MenuItem> order;
@@ -31,7 +33,7 @@ public class Order implements Customizable {
 
     /**
      * Initializes a new Order with given order details such as order number and subtotal.
-     * @param o
+     * @param o the given order
      */
     public Order (Order o) {
         this.order = o.order;

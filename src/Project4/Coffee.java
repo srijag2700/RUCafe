@@ -1,12 +1,12 @@
 package Project4;
 
+import java.util.ArrayList;
+
 /**
  * This class represents a Coffee item.
  * It extends the MenuItem class, and also includes fields for the size of the coffee, quantity and addins.
  * @author Srija Gottiparthi, Catherine Nguyen
  */
-
-import java.util.ArrayList;
 
 public class Coffee extends MenuItem implements Customizable {
     private String size;

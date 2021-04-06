@@ -17,7 +17,7 @@ import javafx.event.ActionEvent;
 
 /**
  * This class represents the controller for the Store Orders menu.
- * It controls the functions of viewing the items & total of each order in the store, canceling selected orders, and exporting the list of orders as a text file.
+ * It controls the functions of viewing the items and total of each order in the store, canceling selected orders, and exporting the list of orders as a text file.
  * @author Srija Gottiparthi, Catherine Nguyen
  */
 

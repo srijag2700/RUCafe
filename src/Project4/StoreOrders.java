@@ -1,9 +1,4 @@
 package Project4;
-/**
- * This class represents all of the store orders in the cafe.
- * An order includes fields such as the list of orders.
- * @author Srija Gottiparthi, Catherine Nguyen
- */
 
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -11,6 +6,12 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+
+/**
+ * This class represents all of the store orders in the cafe.
+ * An order includes fields such as the list of orders.
+ * @author Srija Gottiparthi, Catherine Nguyen
+ */
 
 public class StoreOrders implements Customizable{
     private ArrayList<Order> store;
@@ -25,7 +26,7 @@ public class StoreOrders implements Customizable{
 
     /**
      * Returns the most recent order number.
-     * @return
+     * @return the most recent order number
      */
     public int getLatestOrderNumber() {
         int latestOrderNumber = STARTING_ORDER_NUMBER;

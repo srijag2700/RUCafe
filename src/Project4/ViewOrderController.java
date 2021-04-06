@@ -12,7 +12,7 @@ import java.text.DecimalFormat;
 
 /**
  * This class represents the controller for the View Order menu.
- * It controls the functions of viewing the items in the current order & their subtotal, tax, and total, removing selected items from the order, and placing the order.
+ * It controls the functions of viewing the items in the current order and their subtotal, tax, and total, removing selected items from the order, and placing the order.
  * @author Srija Gottiparthi, Catherine Nguyen
  */
 

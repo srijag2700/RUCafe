@@ -15,7 +15,7 @@ import java.text.DecimalFormat;
 
 /**
  * This class represents the controller for the Order Coffee menu.
- * It controls the functions of selecting a size & add ons for coffee, choosing a quantity, adding and removing coffee, and adding coffee to the current order.
+ * It controls the functions of selecting a size and add ons for coffee, choosing a quantity, adding and removing coffee, and adding coffee to the current order.
  * @author Srija Gottiparthi, Catherine Nguyen
  */
 
@@ -68,7 +68,7 @@ public class CoffeeController {
 
     /**
      * Adds the configured coffee to the list of selected coffees.
-     * @param event the ">>" button getting clicked
+     * @param event the "add coffee" button getting clicked
      */
     @FXML
     public void addCoffee(ActionEvent event) {
@@ -107,7 +107,7 @@ public class CoffeeController {
 
     /**
      * Removes the selected coffee from the list of selected coffees.
-     * @param event the "<<" button getting clicked
+     * @param event the "remove coffee" button getting clicked
      */
     public void removeCoffee(ActionEvent event) {
         if (selectedCoffee.getSelectionModel().getSelectedItem() != null) {
