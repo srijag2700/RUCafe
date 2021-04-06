@@ -78,23 +78,23 @@ public class CoffeeController {
             newCoffeeSize = selectedCoffeeSize.getText();
 
             ArrayList<String> selectedAddIns = new ArrayList<>();
+            Coffee newCoffee = new Coffee(newCoffeeSize, (Integer) coffeeQuantity.getValue(), selectedAddIns);
             if (cream.isSelected()) {
-                selectedAddIns.add("Cream");
+                newCoffee.add("Cream");
             }
             if (syrup.isSelected()) {
-                selectedAddIns.add("Syrup");
+                newCoffee.add("Syrup");
             }
             if (milk.isSelected()) {
-                selectedAddIns.add("Milk");
+                newCoffee.add("Milk");
             }
             if (caramel.isSelected()) {
-                selectedAddIns.add("Caramel");
+                newCoffee.add("Caramel");
             }
             if (whippedCream.isSelected()) {
-                selectedAddIns.add("Whipped Cream");
+                newCoffee.add("Whipped Cream");
             }
 
-            Coffee newCoffee = new Coffee(newCoffeeSize, (Integer) coffeeQuantity.getValue(), selectedAddIns);
             selectedCoffee.getItems().add(newCoffee);
         }
         catch (NullPointerException e) {
